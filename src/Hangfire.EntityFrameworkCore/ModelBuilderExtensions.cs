@@ -82,6 +82,7 @@ public static class ModelBuilderExtensions
         modelBuilder.Entity<HangfireState>(entity =>
         {
             entity.Property(x => x.Data)
+               .HasMaxLength(Int32.MaxValue)
                .HasConversion(
                    x => SerializationHelper.Serialize(x),
                    x => SerializationHelper.Deserialize<Dictionary<string, string>>(x));
